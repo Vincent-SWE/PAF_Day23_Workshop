@@ -23,8 +23,8 @@ public class OrderRestTemplateService {
         new ParameterizedTypeReference<List<Order>>() {
         }, orderId);
 
-return results.getBody();
-}
+        return results.getBody();
+    }
 
     
 
