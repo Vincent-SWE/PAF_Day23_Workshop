@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import PAF.day23workshop.model.Order;
@@ -39,7 +40,22 @@ public class OrderController {
         return "orderlist";
     }
 
+    @PostMapping("/searchTest")
+    public String processSearchTest(@RequestBody SearchRequest searchObj, Model model, BindingResult result) {
+        List<Order> orders = orts.findOrderById(searchObj.getOrderId());
+        model.addAttribute("orders", orders);
 
+        return "orderlist";
+    }
   
 
-}
+    // @PostMapping("/searchTest") 
+    // public String processSearchTest(@RequestBody SearchRequest searchObj, Model model, BindingResult result) {
+    //     List<Order> orders = orts.findOrderById(searchObj.getOrderId());
+    //     model.addAttribute("orders", orders);
+
+    //     return "orderlist";
+    // }
+
+
+}   
